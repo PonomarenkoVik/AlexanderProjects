@@ -10,8 +10,9 @@ namespace FirstProject
 
     class Program
     {
-
-        const int _size = 15;
+        const int topStartPosition = 25;
+        const int leftStartposition = 25;
+        const int _size = 26;
         const string symbol = "#";
 
 
@@ -72,11 +73,57 @@ namespace FirstProject
                     DrawSquare();
                     break;
                 case Figure.Diamond:
+                    DrawDiamond();
                     break;
                 case Figure.Circle:
+                    DrawCircle();
                     break;
                 case Figure.Ellipse:
+                    DrawEllipse();
                     break;
+            }
+            Console.ReadLine();
+        }
+
+        private static void DrawEllipse()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void DrawCircle()
+        {
+            int xInit = leftStartposition + _size / 2;
+            int yInit = topStartPosition + _size / 2;
+            for (int i = 0; i <= _size/2; i++)
+            {
+
+                int x = i;
+                int y = (int)Math.Sqrt(Math.Pow(_size / 2, 2) - Math.Pow(i, 2));
+                //bottom right part
+                Console.SetCursorPosition(xInit + x, yInit + y);
+                Console.Write(symbol);
+                //bottom left part
+                Console.SetCursorPosition(xInit - x, yInit + y);
+                Console.Write(symbol);
+                //top right part
+                Console.SetCursorPosition(xInit + x, yInit - y);
+                Console.Write(symbol);
+                //top left part
+                Console.SetCursorPosition(xInit - x, yInit - y);
+                Console.Write(symbol);
+            }
+        }
+
+        private static void DrawDiamond()
+        {
+            for (int i = -_size/2; i < _size/2; i++)
+            {
+                for (int j = -_size/2 + Math.Abs(i); j < _size / 2 - Math.Abs(i); j++)
+                {
+                    Console.SetCursorPosition(leftStartposition + j + _size/2, topStartPosition + i + _size/2);
+                    Console.Write(symbol);
+                }
+                Console.WriteLine(string.Empty);
             }
         }
 
@@ -86,11 +133,11 @@ namespace FirstProject
             {
                 for (int j = 0; j < _size; j++)
                 {
+                    Console.SetCursorPosition(leftStartposition + i, topStartPosition + j);
                     Console.Write(symbol);
                 }
                 Console.WriteLine(string.Empty);
             }
-            Console.ReadLine();
         }
 
         private static void DrawMenu(int chosen)
