@@ -18,6 +18,7 @@ namespace FirstProject
 
         static void Main(string[] args)
         {
+            Console.CursorVisible = false;
             int menuCount = Enum.GetNames(typeof(Figure)).Length;
             ProcessMenu(menuCount);
         }
