@@ -18,7 +18,6 @@ namespace FirstProject
 
         static void Main(string[] args)
         {
-            Console.CursorVisible = false;
             int menuCount = Enum.GetNames(typeof(Figure)).Length;
             ProcessMenu(menuCount);
         }
@@ -33,6 +32,7 @@ namespace FirstProject
                 {
                     Console.Clear();
                     DrawMenu(chosen);
+                    Console.CursorVisible = false;
                     needRedrawMenu = false;
                 }
 
